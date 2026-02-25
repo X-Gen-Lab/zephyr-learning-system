@@ -81,7 +81,7 @@
   - **Property 2: 内容目录结构一致性**
   - **Validates: Requirements 1.2, 1.3**
 
-- [-] 4. 创建首页和索引页面
+- [x] 4. 创建首页和索引页面
   - [x] 4.1 编写首页内容（docs/index.md）
     - 展示系统愿景：成为全球最系统、最实用的 Zephyr RTOS 中文学习平台
     - 介绍学习系统的核心价值：系统性、实用性、中文优化
@@ -103,7 +103,7 @@
     
     **验证清单**：Mermaid 图表渲染、内部链接有效、移动端友好
 
-  - [ ] 4.2 创建关于页面（docs/about.md）
+  - [x] 4.2 创建关于页面（docs/about.md）
     - 详细阐述愿景：打破技术学习壁垒，推动中国物联网技术发展
     - 说明五大使命：降低门槛、构建体系、强调实践、促进共享、保持时效
     - 阐述核心价值观：以学习者为中心、质量至上、开放协作、持续改进、实践驱动
@@ -148,7 +148,7 @@
     
     **验证清单**：Mermaid 图表渲染、Admonitions 显示、外部链接有效
 
-  - [ ] 4.3 为每个学习阶段创建索引页
+  - [x] 4.3 为每个学习阶段创建索引页
     - 创建 prerequisites/index.md（前置必备知识）
     - 创建 stage1-foundation/index.md（入门筑基期）
     - 创建 stage2-intermediate/index.md（进阶实战期）
@@ -207,8 +207,8 @@
   - **Property 33: 学习理念体现一致性**
   - **Validates: Requirements 13.3, 13.4**
 
-- [ ] 5. 编写前置必备知识内容（系统性基础）
-  - [ ] 5.1 创建 C 语言核心能力页面（prerequisites/c-language.md）
+- [x] 5. 编写前置必备知识内容（系统性基础）
+  - [x] 5.1 创建 C 语言核心能力页面（prerequisites/c-language.md）
     - 包含 YAML Front Matter 元数据（难度：初级，预计时间：1-2 周）
     - C 语言核心语法回顾（指针、结构体、位操作）
     - 嵌入式 C 编程特点（volatile、const、static 的使用）
@@ -251,7 +251,7 @@
     
     **验证清单**：代码高亮正确、Admonitions 显示、折叠内容可用
 
-  - [ ] 5.2 创建嵌入式硬件基础页面（prerequisites/embedded-basics.md）
+  - [x] 5.2 创建嵌入式硬件基础页面（prerequisites/embedded-basics.md）
     - ARM Cortex-M 架构基础（使用 Mermaid 架构图）
     - 内存映射和外设寄存器
     - 中断和异常处理机制
@@ -291,7 +291,7 @@
     
     **验证清单**：Mermaid 图表渲染、表格显示、代码示例正确
 
-  - [ ] 5.3 创建 RTOS 基础概念页面（prerequisites/rtos-concepts.md）
+  - [x] 5.3 创建 RTOS 基础概念页面（prerequisites/rtos-concepts.md）
     - RTOS 核心概念：任务、调度、同步、通信
     - 使用 Admonitions 提示框强调重点概念
     - Zephyr 与其他 RTOS 的对比（FreeRTOS、RT-Thread）
@@ -334,7 +334,7 @@
     
     **验证清单**：Admonitions 显示、状态机图渲染、代码标签页切换、对比表格清晰
 
-  - [ ] 5.4 创建基础工具能力页面（prerequisites/tools.md）
+  - [x] 5.4 创建基础工具能力页面（prerequisites/tools.md）
     - Git 版本控制基础
     - 命令行工具使用（Linux/Windows）
     - 包含命令行示例和实际操作截图
