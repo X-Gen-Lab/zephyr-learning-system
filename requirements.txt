@@ -1,5 +1,7 @@
 # MkDocs and Material Theme
-mkdocs>=1.5.0
+# Note: MkDocs 2.0 is not compatible with Material for MkDocs
+# Locked to 1.x until Material adds support or migration to Zensical
+mkdocs>=1.5.0,<2.0.0
 mkdocs-material>=9.4.0
 
 # Markdown Extensions
