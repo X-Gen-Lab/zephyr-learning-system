@@ -1,0 +1,18 @@
+# MkDocs and Material Theme
+mkdocs>=1.5.0
+mkdocs-material>=9.4.0
+
+# Markdown Extensions
+pymdown-extensions>=10.3
+
+# Plugins
+mkdocs-mermaid2-plugin>=1.1.0
+mkdocs-git-revision-date-localized-plugin>=1.2.0
+mkdocs-minify-plugin>=0.7.0
+
+# Search support
+jieba>=0.42.1
+
+# Development tools
+pytest>=7.4.0
+hypothesis>=6.88.0

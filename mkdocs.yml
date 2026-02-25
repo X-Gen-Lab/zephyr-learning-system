@@ -1,0 +1,135 @@
+# Site Information
+site_name: Zephyr RTOS 学习系统
+site_url: https://example.com
+site_description: 结构化的 Zephyr RTOS 学习知识库，覆盖从入门到专业的全阶段学习路径
+site_author: Zephyr Learning Team
+
+# Repository
+repo_url: https://github.com/example/zephyr-learning-system
+repo_name: zephyr-learning-system
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2024 Zephyr Learning Team
+
+# Theme Configuration
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.instant      # 即时加载
+    - navigation.tracking     # 锚点跟踪
+    - navigation.tabs         # 顶部标签页
+    - navigation.sections     # 章节分组
+    - navigation.expand       # 默认展开
+    - navigation.top          # 返回顶部按钮
+    - search.suggest          # 搜索建议
+    - search.highlight        # 搜索高亮
+    - content.code.copy       # 代码复制按钮
+    - content.tabs.link       # 标签页链接
+  palette:
+    # 浅色模式
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    # 深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+  font:
+    text: Noto Sans SC
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+
+# Markdown Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+# Plugins
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s\-\.]+'
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: datetime
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+  - mermaid2
+
+# Navigation
+nav:
+  - 首页: index.md
+  - 前置必备知识:
+      - prerequisites/index.md
+      - C 语言核心能力: prerequisites/c-language.md
+      - 嵌入式硬件基础: prerequisites/embedded-basics.md
+      - RTOS 基础概念: prerequisites/rtos-concepts.md
+      - 基础工具能力: prerequisites/tools.md
+  - 第一阶段 入门筑基期:
+      - stage1-foundation/index.md
+      - Zephyr 基础认知: stage1-foundation/introduction.md
+      - 开发环境搭建: stage1-foundation/environment-setup.md
+      - west 工具核心用法: stage1-foundation/west-tool.md
+      - 工程结构与配置: stage1-foundation/project-structure.md
+      - 基础例程实操: stage1-foundation/basic-examples.md
+  - 第二阶段 进阶实战期:
+      - stage2-intermediate/index.md
+      - 内核核心机制: stage2-intermediate/kernel-mechanisms.md
+      - Kconfig 和设备树: stage2-intermediate/kconfig-devicetree.md
+      - 驱动开发: stage2-intermediate/driver-development.md
+      - 子系统使用: stage2-intermediate/subsystems.md
+  - 第三阶段 高级深耕期:
+      - stage3-advanced/index.md
+      - 内核源码分析: stage3-advanced/kernel-source.md
+      - BSP 移植: stage3-advanced/bsp-porting.md
+      - 系统优化: stage3-advanced/optimization.md
+      - 安全与合规: stage3-advanced/security.md
+  - 第四阶段 专业精通期:
+      - stage4-expert/index.md
+      - 架构设计: stage4-expert/architecture-design.md
+      - 社区贡献: stage4-expert/community-contribution.md
+      - 技术布道: stage4-expert/technical-evangelism.md
+  - 通用学习黄金法则:
+      - learning-principles/index.md
+
+# Extra Configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/example/zephyr-learning-system
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
