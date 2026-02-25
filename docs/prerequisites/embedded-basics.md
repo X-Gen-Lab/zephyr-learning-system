@@ -66,6 +66,8 @@ graph TB
 
 ARM Cortex-M 使用统一的 4GB 地址空间，不同的内存区域有固定的地址范围：
 
+![ARM Cortex-M 内存映射](../assets/images/hardware/cortex-m-memory-map.svg "ARM Cortex-M 内存地址空间")
+
 | 地址范围 | 用途 | 大小 | 特性 |
 |---------|------|------|------|
 | 0x0000_0000 - 0x1FFF_FFFF | Code（代码区） | 512 MB | 存放程序代码和常量 |
@@ -412,6 +414,8 @@ Zephyr RTOS 支持众多开发板，以下是几款常见且推荐的开发板�
 
 ### Nordic nRF52840 DK
 
+![Nordic nRF52840 DK 开发板](../assets/images/hardware/nrf52840-dk-placeholder.svg "Nordic nRF52840 DK")
+
 **核心特性**:
 
 - **MCU**: nRF52840（Cortex-M4F @ 64 MHz）
@@ -445,6 +449,9 @@ west flash
 
 ### STM32 Nucleo 系列
 
+<!-- 开发板照片占位符 - 待添加实际照片 -->
+<!-- ![STM32 Nucleo 开发板](../../assets/images/hardware/stm32-nucleo.jpg "STM32 Nucleo F429ZI") -->
+
 **核心特性**:
 
 - **MCU**: STM32F4/F7/H7 系列（Cortex-M4/M7）
@@ -476,6 +483,9 @@ west flash
     - 广泛的社区支持
 
 ### ESP32 系列
+
+<!-- 开发板照片占位符 - 待添加实际照片 -->
+<!-- ![ESP32 开发板](../../assets/images/hardware/esp32-devkit.jpg "ESP32 DevKit") -->
 
 **核心特性**:
 

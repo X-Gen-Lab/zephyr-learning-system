@@ -1057,6 +1057,11 @@ Callback called with value: 42
 
 - [第一阶段：入门筑基期](../stage1-foundation/index.md)：开始 Zephyr RTOS 的实战学习
 
+!!! tip "学习建议"
+    - 如果您对嵌入式硬件不熟悉，建议先学习[嵌入式硬件基础](embedded-basics.md)
+    - 如果您想了解高效的学习方法，可以参考[通用学习黄金法则](../learning-principles/index.md)
+    - 完成所有前置知识后，查看[前置知识总览](index.md)进行自我评估
+
 ## 9. 参考资源
 
 ### 官方文档

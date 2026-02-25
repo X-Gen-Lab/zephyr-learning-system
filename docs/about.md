@@ -221,6 +221,10 @@ graph LR
 - **讨论区**：[GitHub Discussions](https://github.com/your-username/zephyr-learning-system/discussions)
 - **问题反馈**：[GitHub Issues](https://github.com/your-username/zephyr-learning-system/issues)
 - **Zephyr 官方社区**：[https://www.zephyrproject.org/community](https://www.zephyrproject.org/community)
+- **Zephyr 官方文档**：[https://docs.zephyrproject.org/](https://docs.zephyrproject.org/)
+- **Zephyr GitHub**：[https://github.com/zephyrproject-rtos/zephyr](https://github.com/zephyrproject-rtos/zephyr)
+- **Zephyr 邮件列表**：[https://lists.zephyrproject.org/](https://lists.zephyrproject.org/)
+- **Zephyr Discord**：[https://chat.zephyrproject.org/](https://chat.zephyrproject.org/)
 
 ## 许可证和致谢
 

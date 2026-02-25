@@ -95,6 +95,11 @@ Zephyr 提供了完整的 RTOS 功能，理解这些概念将帮助您：
 
 完成前置知识的学习后，您就可以开始 Zephyr RTOS 的正式学习之旅了！
 
+!!! tip "推荐学习路径"
+    - 如果您已经掌握了所有前置知识，建议直接进入[第一阶段：入门筑基期](../stage1-foundation/index.md)
+    - 如果您想了解更多学习方法，可以先阅读[通用学习黄金法则](../learning-principles/index.md)
+    - 如果您想了解本平台的设计理念，可以访问[关于页面](../about.md)
+
 <div style="text-align: center; margin-top: 30px;">
     <a href="../stage1-foundation/" class="md-button md-button--primary">
         开始第一阶段：入门筑基期 →
