@@ -27,6 +27,8 @@ theme:
     - search.highlight        # 搜索高亮
     - content.code.copy       # 代码复制按钮
     - content.tabs.link       # 标签页链接
+    - content.action.edit     # 编辑此页按钮
+    - content.action.view     # 查看源代码按钮
   palette:
     # 浅色模式
     - scheme: default
@@ -79,7 +81,11 @@ plugins:
       lang:
         - zh
         - en
-      separator: '[\s\-\.]+'
+      separator: '[\s\u200b\-\.]+'
+      pipeline:
+        - stemmer
+        - stopWordFilter
+        - trimmer
   - git-revision-date-localized:
       enable_creation_date: true
       type: datetime
@@ -92,6 +98,7 @@ plugins:
 # Navigation
 nav:
   - 首页: index.md
+  - 关于: about.md
   - 前置必备知识:
       - prerequisites/index.md
       - C 语言核心能力: prerequisites/c-language.md
