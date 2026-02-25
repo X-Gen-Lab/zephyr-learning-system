@@ -4,7 +4,7 @@
 
 结构化的 Zephyr RTOS 学习知识库，覆盖从入门到专业的全阶段学习路径。
 
-[![Build Status](https://github.com/example/zephyr-learning-system/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/example/zephyr-learning-system/actions)
+[![Build Status](https://github.com/X-Gen-Lab/zephyr-learning-system/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/X-Gen-Lab/zephyr-learning-system/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 项目简介
@@ -441,8 +441,8 @@ zephyr-learning-system/
 
 ## 联系方式
 
-- **GitHub Issues**: [提交问题](https://github.com/example/zephyr-learning-system/issues)
-- **GitHub Discussions**: [参与讨论](https://github.com/example/zephyr-learning-system/discussions)
+- **GitHub Issues**: [提交问题](https://github.com/X-Gen-Lab/zephyr-learning-system/issues)
+- **GitHub Discussions**: [参与讨论](https://github.com/X-Gen-Lab/zephyr-learning-system/discussions)
 - **Email**: contact@example.com
 
 ## 路线图

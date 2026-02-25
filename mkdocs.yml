@@ -5,7 +5,7 @@ site_description: 结构化的 Zephyr RTOS 学习知识库，覆盖从入门到�
 site_author: Zephyr Learning Team
 
 # Repository
-repo_url: https://github.com/example/zephyr-learning-system
+repo_url: https://github.com/X-Gen-Lab/zephyr-learning-system
 repo_name: zephyr-learning-system
 edit_uri: edit/main/docs/
 
@@ -136,7 +136,7 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/example/zephyr-learning-system
+      link: https://github.com/X-Gen-Lab/zephyr-learning-system
   analytics:
     provider: google
     property: G-XXXXXXXXXX

@@ -16,7 +16,7 @@
 
 ### 报告问题
 
-如果你发现了问题，请通过 [GitHub Issues](https://github.com/example/zephyr-learning-system/issues) 报告：
+如果你发现了问题，请通过 [GitHub Issues](https://github.com/X-Gen-Lab/zephyr-learning-system/issues) 报告：
 
 1. 搜索现有 Issues，避免重复报告
 2. 使用清晰的标题描述问题
@@ -29,7 +29,7 @@
 
 ### 建议新功能
 
-我们欢迎功能建议！请通过 [GitHub Discussions](https://github.com/example/zephyr-learning-system/discussions) 或 Issues 提出：
+我们欢迎功能建议！请通过 [GitHub Discussions](https://github.com/X-Gen-Lab/zephyr-learning-system/discussions) 或 Issues 提出：
 
 1. 描述你想要的功能
 2. 解释为什么需要这个功能
@@ -52,7 +52,7 @@
 
 3. **设置上游仓库**
    ```bash
-   git remote add upstream https://github.com/example/zephyr-learning-system.git
+   git remote add upstream https://github.com/X-Gen-Lab/zephyr-learning-system.git
    ```
 
 4. **安装依赖**
@@ -457,8 +457,8 @@ if (ret < 0) {
 如果你在贡献过程中遇到问题：
 
 1. 查看 [README.md](README.md) 中的常见问题
-2. 搜索现有的 [Issues](https://github.com/example/zephyr-learning-system/issues)
-3. 在 [Discussions](https://github.com/example/zephyr-learning-system/discussions) 中提问
+2. 搜索现有的 [Issues](https://github.com/X-Gen-Lab/zephyr-learning-system/issues)
+3. 在 [Discussions](https://github.com/X-Gen-Lab/zephyr-learning-system/discussions) 中提问
 4. 联系维护者
 
 ## 许可证

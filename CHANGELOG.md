@@ -206,9 +206,9 @@
 
 ## 链接
 
-- [项目仓库](https://github.com/example/zephyr-learning-system)
-- [问题反馈](https://github.com/example/zephyr-learning-system/issues)
-- [讨论区](https://github.com/example/zephyr-learning-system/discussions)
+- [项目仓库](https://github.com/X-Gen-Lab/zephyr-learning-system)
+- [问题反馈](https://github.com/X-Gen-Lab/zephyr-learning-system/issues)
+- [讨论区](https://github.com/X-Gen-Lab/zephyr-learning-system/discussions)
 - [贡献指南](CONTRIBUTING.md)
 - [许可证](LICENSE)
 
