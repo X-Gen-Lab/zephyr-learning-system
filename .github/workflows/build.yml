@@ -1,0 +1,206 @@
+name: Build and Deploy
+
+on:
+  # 在推送到 main 分支时触发
+  push:
+    branches:
+      - main
+  
+  # 在 Pull Request 时触发
+  pull_request:
+    branches:
+      - main
+  
+  # 允许手动触发
+  workflow_dispatch:
+
+# 设置权限以允许部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个并发部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # 构建任务
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整历史以支持 git-revision-date 插件
+      
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: 安装依赖
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: 验证配置文件
+        run: |
+          echo "验证 mkdocs.yml 配置..."
+          if [ ! -f "mkdocs.yml" ]; then
+            echo "错误: 未找到 mkdocs.yml"
+            exit 1
+          fi
+          
+          # 检查必需字段
+          if ! grep -q "site_name:" mkdocs.yml; then
+            echo "错误: mkdocs.yml 缺少 site_name 字段"
+            exit 1
+          fi
+          
+          echo "配置文件验证通过"
+      
+      - name: 构建网站
+        run: |
+          echo "开始构建网站..."
+          mkdocs build --strict --verbose
+          echo "构建完成"
+      
+      - name: 验证构建结果
+        run: |
+          echo "验证构建结果..."
+          
+          # 检查关键文件
+          REQUIRED_FILES=("index.html" "search/search_index.json" "sitemap.xml")
+          
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "site/$file" ]; then
+              echo "错误: 缺少关键文件 $file"
+              exit 1
+            fi
+            echo "✓ $file"
+          done
+          
+          # 显示构建统计
+          FILE_COUNT=$(find site -type f | wc -l)
+          TOTAL_SIZE=$(du -sh site | cut -f1)
+          echo "生成文件数: $FILE_COUNT"
+          echo "总大小: $TOTAL_SIZE"
+          
+          echo "构建结果验证通过"
+      
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/
+          retention-days: 7
+      
+      - name: 设置 GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v4
+      
+      - name: 上传到 GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+  
+  # 部署任务（仅在推送到 main 分支时执行）
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
+      - name: 部署成功通知
+        run: |
+          echo "✓ 网站已成功部署到 GitHub Pages"
+          echo "URL: ${{ steps.deployment.outputs.page_url }}"
+  
+  # 内容质量检查任务
+  quality-check:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      - name: 下载构建产物
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site/
+      
+      - name: 检查文件大小
+        run: |
+          echo "检查文件大小..."
+          
+          # 检查大文件
+          LARGE_FILES=$(find site -type f -size +500k)
+          
+          if [ -n "$LARGE_FILES" ]; then
+            echo "警告: 发现大文件（> 500KB）:"
+            echo "$LARGE_FILES"
+          else
+            echo "✓ 所有文件大小合理"
+          fi
+      
+      - name: 检查搜索索引
+        run: |
+          echo "检查搜索索引..."
+          
+          SEARCH_INDEX="site/search/search_index.json"
+          
+          if [ ! -f "$SEARCH_INDEX" ]; then
+            echo "错误: 搜索索引不存在"
+            exit 1
+          fi
+          
+          # 验证 JSON 格式
+          if python3 -c "import json; json.load(open('$SEARCH_INDEX'))"; then
+            echo "✓ 搜索索引格式正确"
+          else
+            echo "错误: 搜索索引 JSON 格式无效"
+            exit 1
+          fi
+          
+          # 检查索引大小
+          INDEX_SIZE=$(stat -c%s "$SEARCH_INDEX")
+          INDEX_SIZE_MB=$((INDEX_SIZE / 1024 / 1024))
+          echo "搜索索引大小: ${INDEX_SIZE_MB} MB"
+          
+          if [ "$INDEX_SIZE_MB" -gt 5 ]; then
+            echo "警告: 搜索索引较大（> 5MB）"
+          fi
+      
+      - name: 统计信息
+        run: |
+          echo "=========================================="
+          echo "           构建统计信息"
+          echo "=========================================="
+          
+          HTML_COUNT=$(find site -name "*.html" | wc -l)
+          CSS_COUNT=$(find site -name "*.css" | wc -l)
+          JS_COUNT=$(find site -name "*.js" | wc -l)
+          IMAGE_COUNT=$(find site -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.svg" \) | wc -l)
+          TOTAL_SIZE=$(du -sh site | cut -f1)
+          
+          echo "HTML 文件: $HTML_COUNT"
+          echo "CSS 文件: $CSS_COUNT"
+          echo "JavaScript 文件: $JS_COUNT"
+          echo "图片文件: $IMAGE_COUNT"
+          echo "总大小: $TOTAL_SIZE"
+          echo "=========================================="

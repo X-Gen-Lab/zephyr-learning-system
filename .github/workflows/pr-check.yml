@@ -1,0 +1,201 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+jobs:
+  # 快速检查任务
+  quick-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      - name: 检查文件变更
+        run: |
+          echo "检查变更的文件..."
+          git diff --name-only origin/main...HEAD
+          
+          # 统计变更
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD | wc -l)
+          MD_FILES=$(git diff --name-only origin/main...HEAD | grep -c '\.md$' || true)
+          
+          echo "变更文件总数: $CHANGED_FILES"
+          echo "Markdown 文件: $MD_FILES"
+      
+      - name: 检查 Markdown 格式
+        run: |
+          echo "检查 Markdown 文件格式..."
+          
+          # 检查变更的 Markdown 文件
+          CHANGED_MD=$(git diff --name-only origin/main...HEAD | grep '\.md$' || true)
+          
+          if [ -z "$CHANGED_MD" ]; then
+            echo "没有 Markdown 文件变更"
+            exit 0
+          fi
+          
+          echo "检查以下文件:"
+          echo "$CHANGED_MD"
+          
+          # 简单的格式检查
+          for file in $CHANGED_MD; do
+            if [ -f "$file" ]; then
+              echo "检查: $file"
+              
+              # 检查是否有未闭合的代码块
+              BACKTICKS=$(grep -c '```' "$file" || true)
+              if [ $((BACKTICKS % 2)) -ne 0 ]; then
+                echo "警告: $file 可能有未闭合的代码块"
+              fi
+            fi
+          done
+          
+          echo "✓ Markdown 格式检查完成"
+  
+  # 构建测试任务
+  build-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: 安装依赖
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: 构建测试
+        run: |
+          echo "测试构建..."
+          mkdocs build --strict
+          echo "✓ 构建成功"
+      
+      - name: 检查构建产物
+        run: |
+          echo "检查构建产物..."
+          
+          if [ ! -d "site" ]; then
+            echo "错误: site/ 目录不存在"
+            exit 1
+          fi
+          
+          # 检查关键文件
+          REQUIRED_FILES=("index.html" "search/search_index.json")
+          
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "site/$file" ]; then
+              echo "错误: 缺少 $file"
+              exit 1
+            fi
+          done
+          
+          echo "✓ 构建产物检查通过"
+      
+      - name: 生成预览信息
+        run: |
+          echo "=========================================="
+          echo "           PR 预览信息"
+          echo "=========================================="
+          
+          FILE_COUNT=$(find site -type f | wc -l)
+          TOTAL_SIZE=$(du -sh site | cut -f1)
+          
+          echo "生成文件数: $FILE_COUNT"
+          echo "总大小: $TOTAL_SIZE"
+          echo ""
+          echo "提示: 合并后将自动部署到 GitHub Pages"
+          echo "=========================================="
+  
+  # 内容检查任务
+  content-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      - name: 检查中文内容
+        run: |
+          echo "检查中文内容..."
+          
+          # 检查是否有中文内容
+          if git diff --name-only origin/main...HEAD | grep -q 'docs/'; then
+            echo "✓ 发现文档变更"
+            
+            # 统计中文字符（简单检查）
+            CHANGED_DOCS=$(git diff --name-only origin/main...HEAD | grep 'docs/.*\.md$' || true)
+            
+            if [ -n "$CHANGED_DOCS" ]; then
+              echo "变更的文档文件:"
+              echo "$CHANGED_DOCS"
+            fi
+          else
+            echo "没有文档变更"
+          fi
+      
+      - name: 检查图片资源
+        run: |
+          echo "检查图片资源..."
+          
+          # 检查新增的图片
+          NEW_IMAGES=$(git diff --name-only --diff-filter=A origin/main...HEAD | grep -E '\.(png|jpg|jpeg|gif|svg)$' || true)
+          
+          if [ -n "$NEW_IMAGES" ]; then
+            echo "新增图片:"
+            echo "$NEW_IMAGES"
+            
+            # 检查图片大小
+            for img in $NEW_IMAGES; do
+              if [ -f "$img" ]; then
+                SIZE=$(stat -c%s "$img")
+                SIZE_KB=$((SIZE / 1024))
+                
+                if [ "$SIZE_KB" -gt 200 ]; then
+                  echo "警告: $img 较大 (${SIZE_KB} KB)，建议压缩"
+                fi
+              fi
+            done
+          else
+            echo "没有新增图片"
+          fi
+  
+  # PR 摘要任务
+  pr-summary:
+    runs-on: ubuntu-latest
+    needs: [quick-check, build-test, content-check]
+    if: always()
+    
+    steps:
+      - name: 生成 PR 摘要
+        run: |
+          echo "=========================================="
+          echo "           PR 检查摘要"
+          echo "=========================================="
+          echo ""
+          echo "✓ 快速检查: ${{ needs.quick-check.result }}"
+          echo "✓ 构建测试: ${{ needs.build-test.result }}"
+          echo "✓ 内容检查: ${{ needs.content-check.result }}"
+          echo ""
+          
+          if [ "${{ needs.quick-check.result }}" = "success" ] && \
+             [ "${{ needs.build-test.result }}" = "success" ] && \
+             [ "${{ needs.content-check.result }}" = "success" ]; then
+            echo "✓ 所有检查通过，可以合并"
+          else
+            echo "✗ 部分检查失败，请修复后重试"
+            exit 1
+          fi
