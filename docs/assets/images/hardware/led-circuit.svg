@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- LED Circuit Diagram Placeholder -->
+  <defs>
+    <style>
+      .wire { stroke: #000; stroke-width: 2; fill: none; }
+      .component { fill: #fff; stroke: #000; stroke-width: 2; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #000; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+      .title { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #0d47a1; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="300" y="30" class="title">LED 电路连接示意图</text>
+  
+  <!-- GPIO Pin -->
+  <rect x="50" y="150" width="100" height="60" class="component" rx="5"/>
+  <text x="100" y="185" class="text" text-anchor="middle">GPIO</text>
+  <text x="100" y="200" class="label" text-anchor="middle">输出引脚</text>
+  
+  <!-- Wire from GPIO to Resistor -->
+  <line x1="150" y1="180" x2="220" y2="180" class="wire"/>
+  
+  <!-- Resistor -->
+  <rect x="220" y="160" width="80" height="40" class="component" rx="3"/>
+  <text x="260" y="185" class="text" text-anchor="middle">R</text>
+  <text x="260" y="220" class="label" text-anchor="middle">限流电阻</text>
+  <text x="260" y="235" class="label" text-anchor="middle">330Ω</text>
+  
+  <!-- Wire from Resistor to LED -->
+  <line x1="300" y1="180" x2="370" y2="180" class="wire"/>
+  
+  <!-- LED -->
+  <circle cx="400" cy="180" r="25" class="component"/>
+  <polygon points="400,165 410,180 400,195 390,180" fill="#ff0000" stroke="#000" stroke-width="1"/>
+  <text x="400" y="230" class="label" text-anchor="middle">LED</text>
+  <text x="400" y="245" class="label" text-anchor="middle">(红色)</text>
+  
+  <!-- Wire from LED to GND -->
+  <line x1="425" y1="180" x2="500" y2="180" class="wire"/>
+  
+  <!-- GND -->
+  <line x1="500" y1="160" x2="500" y2="200" class="wire"/>
+  <line x1="490" y1="200" x2="510" y2="200" class="wire"/>
+  <line x1="493" y1="205" x2="507" y2="205" class="wire"/>
+  <line x1="496" y1="210" x2="504" y2="210" class="wire"/>
+  <text x="500" y="235" class="label" text-anchor="middle">GND</text>
+  <text x="500" y="250" class="label" text-anchor="middle">地</text>
+  
+  <!-- Voltage indicators -->
+  <text x="100" y="130" class="label" text-anchor="middle">3.3V (高电平)</text>
+  <text x="500" y="130" class="label" text-anchor="middle">0V</text>
+  
+  <!-- Current flow arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#ff6b6b" />
+    </marker>
+  </defs>
+  <line x1="180" y1="150" x2="450" y2="150" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,5"/>
+  <text x="315" y="140" class="label" text-anchor="middle" fill="#ff6b6b">电流方向</text>
+  
+  <!-- Notes -->
+  <text x="50" y="300" class="label">说明：</text>
+  <text x="50" y="320" class="label">• GPIO 输出高电平 (3.3V) 时，LED 点亮</text>
+  <text x="50" y="340" class="label">• 限流电阻保护 LED，防止电流过大烧毁</text>
+  <text x="50" y="360" class="label">• 典型电流：约 10mA (根据 LED 规格选择电阻值)</text>
+</svg>

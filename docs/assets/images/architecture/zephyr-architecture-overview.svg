@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Zephyr Architecture Overview Placeholder -->
+  <defs>
+    <style>
+      .layer { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; }
+      .text { font-family: Arial, sans-serif; font-size: 18px; fill: #1976d2; text-anchor: middle; }
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #0d47a1; text-anchor: middle; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 14px; fill: #666; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Zephyr RTOS 架构总览</text>
+  
+  <!-- Application Layer -->
+  <rect x="100" y="80" width="600" height="80" class="layer" rx="5"/>
+  <text x="400" y="125" class="text">应用层 (Application Layer)</text>
+  
+  <!-- API Layer -->
+  <rect x="100" y="180" width="600" height="80" class="layer" rx="5"/>
+  <text x="400" y="225" class="text">API 层 (Kernel APIs &amp; Subsystems)</text>
+  
+  <!-- Kernel Layer -->
+  <rect x="100" y="280" width="600" height="80" class="layer" rx="5"/>
+  <text x="400" y="315" class="text">内核层 (Kernel: Scheduler, Memory, IPC)</text>
+  <text x="400" y="340" class="subtitle">调度器 | 内存管理 | 线程同步 | 中断处理</text>
+  
+  <!-- Driver Layer -->
+  <rect x="100" y="380" width="600" height="80" class="layer" rx="5"/>
+  <text x="400" y="415" class="text">驱动层 (Device Drivers)</text>
+  <text x="400" y="440" class="subtitle">GPIO | UART | SPI | I2C | ADC | PWM</text>
+  
+  <!-- Hardware Layer -->
+  <rect x="100" y="480" width="600" height="80" class="layer" rx="5"/>
+  <text x="400" y="525" class="text">硬件层 (Hardware: ARM, x86, RISC-V, etc.)</text>
+  
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#1976d2" />
+    </marker>
+  </defs>
+  <line x1="400" y1="160" x2="400" y2="180" stroke="#1976d2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="400" y1="260" x2="400" y2="280" stroke="#1976d2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="400" y1="360" x2="400" y2="380" stroke="#1976d2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="400" y1="460" x2="400" y2="480" stroke="#1976d2" stroke-width="2" marker-end="url(#arrowhead)"/>
+</svg>

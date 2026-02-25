@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <!-- ARM Cortex-M Memory Map Placeholder -->
+  <defs>
+    <style>
+      .region { stroke: #000; stroke-width: 2; }
+      .code { fill: #bbdefb; }
+      .sram { fill: #c8e6c9; }
+      .periph { fill: #fff9c4; }
+      .system { fill: #ffccbc; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #000; text-anchor: middle; }
+      .addr { font-family: 'Courier New', monospace; font-size: 12px; fill: #666; }
+      .title { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #0d47a1; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="300" y="30" class="title">ARM Cortex-M 内存映射</text>
+  
+  <!-- Memory regions -->
+  <!-- Code Region -->
+  <rect x="150" y="60" width="300" height="120" class="region code"/>
+  <text x="300" y="110" class="text">代码区 (Code)</text>
+  <text x="300" y="130" class="text">Flash Memory</text>
+  <text x="150" y="55" class="addr" text-anchor="start">0x0000_0000</text>
+  <text x="450" y="55" class="addr" text-anchor="end">0x1FFF_FFFF</text>
+  <text x="300" y="150" class="addr">512 MB</text>
+  
+  <!-- SRAM Region -->
+  <rect x="150" y="200" width="300" height="120" class="region sram"/>
+  <text x="300" y="250" class="text">SRAM 区</text>
+  <text x="300" y="270" class="text">数据和栈</text>
+  <text x="150" y="195" class="addr" text-anchor="start">0x2000_0000</text>
+  <text x="450" y="195" class="addr" text-anchor="end">0x3FFF_FFFF</text>
+  <text x="300" y="290" class="addr">512 MB</text>
+  
+  <!-- Peripheral Region -->
+  <rect x="150" y="340" width="300" height="120" class="region periph"/>
+  <text x="300" y="390" class="text">外设区 (Peripherals)</text>
+  <text x="300" y="410" class="text">GPIO, UART, SPI, I2C, etc.</text>
+  <text x="150" y="335" class="addr" text-anchor="start">0x4000_0000</text>
+  <text x="450" y="335" class="addr" text-anchor="end">0x5FFF_FFFF</text>
+  <text x="300" y="430" class="addr">512 MB</text>
+  
+  <!-- External RAM Region -->
+  <rect x="150" y="480" width="300" height="80" class="region sram"/>
+  <text x="300" y="525" class="text">外部 RAM</text>
+  <text x="150" y="475" class="addr" text-anchor="start">0x6000_0000</text>
+  <text x="450" y="475" class="addr" text-anchor="end">0x9FFF_FFFF</text>
+  <text x="300" y="545" class="addr">1 GB</text>
+  
+  <!-- External Device Region -->
+  <rect x="150" y="580" width="300" height="80" class="region periph"/>
+  <text x="300" y="625" class="text">外部设备</text>
+  <text x="150" y="575" class="addr" text-anchor="start">0xA000_0000</text>
+  <text x="450" y="575" class="addr" text-anchor="end">0xDFFF_FFFF</text>
+  <text x="300" y="645" class="addr">1 GB</text>
+  
+  <!-- System Region -->
+  <rect x="150" y="680" width="300" height="80" class="region system"/>
+  <text x="300" y="715" class="text">系统区</text>
+  <text x="300" y="735" class="text">NVIC, SysTick, Debug</text>
+  <text x="150" y="675" class="addr" text-anchor="start">0xE000_0000</text>
+  <text x="450" y="675" class="addr" text-anchor="end">0xFFFF_FFFF</text>
+  <text x="300" y="755" class="addr">512 MB</text>
+  
+  <!-- Legend -->
+  <text x="50" y="90" class="text" text-anchor="start" font-size="12">图例：</text>
+  <rect x="50" y="100" width="20" height="15" class="code" stroke="#000"/>
+  <text x="75" y="112" class="text" text-anchor="start" font-size="11">代码/Flash</text>
+  <rect x="50" y="120" width="20" height="15" class="sram" stroke="#000"/>
+  <text x="75" y="132" class="text" text-anchor="start" font-size="11">SRAM</text>
+  <rect x="50" y="140" width="20" height="15" class="periph" stroke="#000"/>
+  <text x="75" y="152" class="text" text-anchor="start" font-size="11">外设</text>
+  <rect x="50" y="160" width="20" height="15" class="system" stroke="#000"/>
+  <text x="75" y="172" class="text" text-anchor="start" font-size="11">系统</text>
+</svg>

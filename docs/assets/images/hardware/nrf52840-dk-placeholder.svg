@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- nRF52840 DK Placeholder -->
+  <defs>
+    <style>
+      .board { fill: #1a237e; stroke: #000; stroke-width: 2; }
+      .chip { fill: #424242; stroke: #000; stroke-width: 1; }
+      .led { fill: #ff0000; }
+      .button { fill: #757575; stroke: #000; stroke-width: 1; }
+      .connector { fill: #c0c0c0; stroke: #000; stroke-width: 1; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #fff; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #000; }
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #0d47a1; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Nordic nRF52840 DK 开发板</text>
+  <text x="400" y="65" class="label" text-anchor="middle">(示意图 - 实际产品请参考官方图片)</text>
+  
+  <!-- Board PCB -->
+  <rect x="100" y="100" width="600" height="450" class="board" rx="10"/>
+  
+  <!-- Main Chip (nRF52840) -->
+  <rect x="300" y="200" width="200" height="200" class="chip" rx="5"/>
+  <text x="400" y="290" class="text">nRF52840</text>
+  <text x="400" y="310" class="text">SoC</text>
+  
+  <!-- LEDs -->
+  <circle cx="150" cy="150" r="10" class="led"/>
+  <text x="150" y="180" class="label" text-anchor="middle">LED1</text>
+  <circle cx="200" cy="150" r="10" class="led"/>
+  <text x="200" y="180" class="label" text-anchor="middle">LED2</text>
+  <circle cx="250" cy="150" r="10" class="led"/>
+  <text x="250" y="180" class="label" text-anchor="middle">LED3</text>
+  
+  <!-- Buttons -->
+  <rect x="550" y="140" width="40" height="20" class="button" rx="3"/>
+  <text x="570" y="180" class="label" text-anchor="middle">BTN1</text>
+  <rect x="610" y="140" width="40" height="20" class="button" rx="3"/>
+  <text x="630" y="180" class="label" text-anchor="middle">BTN2</text>
+  
+  <!-- USB Connector -->
+  <rect x="350" y="90" width="100" height="30" class="connector" rx="3"/>
+  <text x="400" y="75" class="label" text-anchor="middle">USB</text>
+  
+  <!-- Debug Connector -->
+  <rect x="650" y="250" width="30" height="100" class="connector" rx="3"/>
+  <text x="690" y="300" class="label" text-anchor="start">Debug</text>
+  
+  <!-- Arduino Headers -->
+  <rect x="120" y="420" width="20" height="100" class="connector" rx="2"/>
+  <rect x="160" y="420" width="20" height="100" class="connector" rx="2"/>
+  <text x="150" y="540" class="label" text-anchor="middle">Arduino</text>
+  <text x="150" y="555" class="label" text-anchor="middle">Headers</text>
+  
+  <!-- Features List -->
+  <text x="120" y="240" class="label" font-weight="bold">主要特性：</text>
+  <text x="120" y="260" class="label">• ARM Cortex-M4F @ 64 MHz</text>
+  <text x="120" y="280" class="label">• 1 MB Flash, 256 KB RAM</text>
+  <text x="120" y="300" class="label">• Bluetooth 5.0, Thread, Zigbee</text>
+  <text x="120" y="320" class="label">• NFC, USB, QSPI</text>
+  <text x="120" y="340" class="label">• 板载调试器 (J-Link)</text>
+  <text x="120" y="360" class="label">• Arduino 兼容接口</text>
+</svg>
