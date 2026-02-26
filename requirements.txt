@@ -8,7 +8,6 @@ mkdocs-material>=9.4.0
 pymdown-extensions>=10.3
 
 # Plugins
-mkdocs-mermaid2-plugin>=1.1.0
 mkdocs-git-revision-date-localized-plugin>=1.2.0
 mkdocs-minify-plugin>=0.7.0
 mkdocs-linkcheck>=1.0.0

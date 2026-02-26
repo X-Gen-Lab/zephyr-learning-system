@@ -75,9 +75,6 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
-  - pymdownx.extra:
-      pymdownx.superfences:
-        preserve_tabs: true
 
 # Plugins
 plugins:
@@ -97,7 +94,6 @@ plugins:
       minify_html: true
       minify_js: true
       minify_css: true
-  - mermaid2
 
 # Navigation
 nav:
@@ -156,6 +152,8 @@ extra_css:
 
 # Custom JavaScript for image optimization and community features
 extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/javascripts/mermaid-init.js
   - assets/javascripts/image-optimization.js
   - assets/javascripts/progress-tracker.js
   - assets/javascripts/progress-display.js
