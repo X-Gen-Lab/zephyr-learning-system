@@ -1,0 +1,62 @@
+/* Image Optimization Styles */
+
+/* Lazy loading images - add loading attribute support */
+img[loading="lazy"] {
+  /* Placeholder while loading */
+  background: var(--md-default-bg-color);
+  min-height: 100px;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+/* Image captions */
+figure {
+  margin: 2em 0;
+  text-align: center;
+}
+
+figure img {
+  margin-bottom: 0.5em;
+}
+
+figcaption {
+  font-size: 0.9em;
+  color: var(--md-default-fg-color--light);
+  font-style: italic;
+}
+
+/* Image optimization for print */
+@media print {
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+}
+
+/* Performance: Reduce layout shift with aspect ratio boxes */
+.img-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* SVG optimization */
+svg {
+  max-width: 100%;
+  height: auto;
+}
