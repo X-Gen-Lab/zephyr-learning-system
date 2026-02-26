@@ -11,14 +11,14 @@
 // Giscus 配置
 const giscusConfig = {
   repo: 'X-Gen-Lab/zephyr-learning-system',
-  repoId: 'R_kgDONWqGdg', // 从 giscus.app 获取
-  category: 'General',
-  categoryId: 'DIC_kwDONWqGds4ClQVh', // 从 giscus.app 获取
+  repoId: 'R_kgDORYYNgg',
+  category: 'Announcements',
+  categoryId: 'DIC_kwDORYYNgs4C3MHU',
   mapping: 'pathname',
   strict: '0',
   reactionsEnabled: '1',
   emitMetadata: '0',
-  inputPosition: 'top',
+  inputPosition: 'bottom',
   theme: 'preferred_color_scheme',
   lang: 'zh-CN',
   loading: 'lazy'
