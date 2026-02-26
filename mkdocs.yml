@@ -74,6 +74,9 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
+  - pymdownx.extra:
+      pymdownx.superfences:
+        preserve_tabs: true
 
 # Plugins
 plugins:
@@ -140,3 +143,11 @@ extra:
   analytics:
     provider: google
     property: G-XXXXXXXXXX
+
+# Custom CSS for image optimization
+extra_css:
+  - assets/stylesheets/extra.css
+
+# Custom JavaScript for image optimization
+extra_javascript:
+  - assets/javascripts/image-optimization.js
