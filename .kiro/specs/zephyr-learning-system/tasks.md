@@ -1716,29 +1716,29 @@
   - **Property 35: 进度显示一致性**
   - **Validates: Requirements 14.2, 14.3**
 
-- [ ] 22. 集成社区互动功能
-  - [ ] 22.1 配置评论系统
+- [x] 22. 集成社区互动功能
+  - [x] 22.1 配置评论系统
     - 选择评论系统方案（Giscus 基于 GitHub Discussions 或 Utterances 基于 GitHub Issues）
     - 在 mkdocs.yml 中配置评论插件
     - 在页面模板中添加评论区
     - 配置评论主题和样式
     - _Requirements: 15.1_
 
-  - [ ] 22.2 添加反馈功能
+  - [x] 22.2 添加反馈功能
     - 在每个页面添加"报告问题"链接，指向 GitHub Issues
     - 配置 Issue 模板，包含页面信息和问题分类
     - 添加"内容有用"点赞按钮（使用 localStorage 记录）
     - 显示点赞统计（可选，需要后端支持）
     - _Requirements: 15.2, 15.4, 15.6_
 
-  - [ ] 22.3 添加社区统计展示
+  - [x] 22.3 添加社区统计展示
     - 在首页显示 GitHub 仓库统计（Stars、Forks、Contributors）
     - 使用 GitHub API 获取贡献者信息
     - 显示最近更新时间和更新频率
     - 添加"加入我们"行动号召按钮
     - _Requirements: 15.5_
 
-  - [ ] 22.4 配置页面访问统计（可选）
+  - [x] 22.4 配置页面访问统计（可选）
     - 选择统计方案（Google Analytics 或 Plausible 等隐私友好方案）
     - 配置统计代码
     - 在页面显示阅读次数（如果统计服务支持）

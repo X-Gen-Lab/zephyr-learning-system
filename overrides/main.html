@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+  
+  <!-- Comments Section -->
+  <div id="comments-container">
+    <div class="comments-header">
+      <h2>💬 讨论与反馈</h2>
+      <p class="comments-description">
+        欢迎在下方评论区分享您的学习心得、提出问题或给出建议。评论系统基于 GitHub Discussions，需要 GitHub 账号登录。
+      </p>
+    </div>
+    <div class="comments-loading">
+      正在加载评论系统...
+    </div>
+  </div>
+{% endblock %}

@@ -16,6 +16,7 @@ copyright: Copyright &copy; 2024 Zephyr Learning Team
 theme:
   name: material
   language: zh
+  custom_dir: overrides
   features:
     - navigation.instant      # 即时加载
     - navigation.tracking     # 锚点跟踪
@@ -134,6 +135,11 @@ nav:
       - 技术布道: stage4-expert/technical-evangelism.md
   - 通用学习黄金法则:
       - learning-principles/index.md
+  - 开发者文档:
+      - 社区功能说明: COMMUNITY_FEATURES.md
+      - Giscus 配置指南: GISCUS_SETUP.md
+      - 统计配置指南: ANALYTICS_SETUP.md
+      - 性能优化: PERFORMANCE.md
 
 # Extra Configuration
 extra:
@@ -148,9 +154,13 @@ extra:
 extra_css:
   - assets/stylesheets/extra.css
 
-# Custom JavaScript for image optimization
+# Custom JavaScript for image optimization and community features
 extra_javascript:
   - assets/javascripts/image-optimization.js
   - assets/javascripts/progress-tracker.js
   - assets/javascripts/progress-display.js
   - assets/javascripts/progress-management.js
+  - assets/javascripts/comments.js
+  - assets/javascripts/feedback.js
+  - assets/javascripts/community-stats.js
+  - assets/javascripts/analytics-helper.js
