@@ -71,16 +71,26 @@
     // 移除结尾的 / 和 .html
     path = path.replace(/\/$/, '').replace(/\.html$/, '');
     
-    // 移除 GitHub Pages 的仓库名称前缀（如果存在）
-    // 例如：zephyr-learning-system/prerequisites/index -> prerequisites/index
-    const repoNameMatch = path.match(/^([^\/]+)\/(.*)/);
-    if (repoNameMatch && repoNameMatch[2] !== undefined) {
-      path = repoNameMatch[2];
-    }
-    
     // 处理特殊情况
     if (path === '' || path === 'index' || path === 'index.html') {
       return null; // 首页不标记
+    }
+    
+    // 移除 GitHub Pages 的仓库名称前缀（如果存在）
+    // 例如：zephyr-learning-system/prerequisites/index -> prerequisites/index
+    // 或者：zephyr-learning-system -> null (仓库根目录就是首页)
+    const repoNameMatch = path.match(/^([^\/]+)(?:\/(.*))?$/);
+    if (repoNameMatch) {
+      const repoName = repoNameMatch[1];
+      const restPath = repoNameMatch[2];
+      
+      // 如果只有仓库名，没有后续路径，说明是首页
+      if (!restPath || restPath === '' || restPath === 'index') {
+        return null; // 首页不标记
+      }
+      
+      // 如果有后续路径，使用后续路径
+      path = restPath;
     }
     
     // 如果页面 ID 不包含 /，说明是目录索引页，添加 /index
