@@ -28,16 +28,26 @@ const giscusConfig = {
  * 加载 Giscus 评论系统
  */
 function loadGiscus() {
-  // 检查是否在内容页面（非首页、索引页）
+  // 检查是否在内容页面（非首页、阶段索引页）
   const path = window.location.pathname;
-  const isHomePage = path === '/' || path === '/index.html' || 
-                     path.endsWith('/zephyr-learning-system/') || 
-                     path.endsWith('/zephyr-learning-system/index.html');
-  const isIndexPage = path.endsWith('/index.html') || path.endsWith('/index/');
   
-  if (isHomePage || isIndexPage) {
-    console.log('[Comments] Skipping comments on index page:', path);
-    return; // 首页和索引页不显示评论
+  // 首页判断
+  const isHomePage = path === '/' || 
+                     path === '/index.html' || 
+                     path === '/zephyr-learning-system/' || 
+                     path === '/zephyr-learning-system/index.html';
+  
+  // 阶段索引页判断（如 /stage1-foundation/index.html 或 /prerequisites/index.html）
+  const isStageIndexPage = /\/(prerequisites|stage\d-[^\/]+|learning-principles)\/(index\.html)?$/.test(path);
+  
+  if (isHomePage) {
+    console.log('[Comments] Skipping comments on homepage:', path);
+    return;
+  }
+  
+  if (isStageIndexPage) {
+    console.log('[Comments] Skipping comments on stage index page:', path);
+    return;
   }
 
   // 查找评论容器
