@@ -90,6 +90,11 @@ function loadGiscus() {
   script.setAttribute('crossorigin', 'anonymous');
   script.async = true;
 
+  // 添加加载成功日志
+  script.onload = function() {
+    console.log('[Comments] Giscus script loaded successfully');
+  };
+
   // 添加错误处理
   script.onerror = function() {
     console.error('[Comments] Failed to load Giscus script');
@@ -99,8 +104,8 @@ function loadGiscus() {
       <p>⚠️ 评论系统加载失败</p>
       <p>可能的原因：</p>
       <ul>
-        <li>GitHub Discussions 未启用</li>
-        <li>Giscus App 未安装</li>
+        <li>Giscus App 未安装到仓库</li>
+        <li>配置参数不正确</li>
         <li>网络连接问题</li>
       </ul>
       <p>请查看 <a href="/GISCUS_SETUP/" target="_blank">配置指南</a></p>

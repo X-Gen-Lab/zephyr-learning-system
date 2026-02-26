@@ -1167,3 +1167,52 @@ svg {
   border-color: rgba(255, 193, 7, 0.3);
   color: #ffc107;
 }
+
+/* Comments setup notice styling */
+.comments-setup-notice {
+  background: #e3f2fd;
+  border: 2px solid #2196f3;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 20px 0;
+  color: #1565c0;
+}
+
+.comments-setup-notice h3 {
+  margin-top: 0;
+  color: #1565c0;
+  font-size: 1.2em;
+}
+
+.comments-setup-notice ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.comments-setup-notice li {
+  margin: 8px 0;
+}
+
+.comments-setup-notice a {
+  color: #1976d2;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.comments-setup-notice a:hover {
+  color: #0d47a1;
+}
+
+[data-md-color-scheme="slate"] .comments-setup-notice {
+  background: rgba(33, 150, 243, 0.1);
+  border-color: rgba(33, 150, 243, 0.3);
+  color: #64b5f6;
+}
+
+[data-md-color-scheme="slate"] .comments-setup-notice h3 {
+  color: #64b5f6;
+}
+
+[data-md-color-scheme="slate"] .comments-setup-notice a {
+  color: #90caf9;
+}
