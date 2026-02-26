@@ -154,18 +154,20 @@
     // 移除 GitHub Pages 的仓库名称前缀（如果存在）
     // 例如：zephyr-learning-system/prerequisites/index -> prerequisites/index
     // 或者：zephyr-learning-system -> index (仓库根目录就是首页)
-    const repoNameMatch = pageId.match(/^([^\/]+)(?:\/(.*))?$/);
-    if (repoNameMatch) {
-      const repoName = repoNameMatch[1];
-      const restPath = repoNameMatch[2];
+    
+    // 检查是否只是仓库名（没有后续路径）
+    if (pageId === 'zephyr-learning-system') {
+      return 'index';
+    }
+    
+    // 移除仓库名前缀
+    if (pageId.startsWith('zephyr-learning-system/')) {
+      pageId = pageId.replace(/^zephyr-learning-system\//, '');
       
-      // 如果只有仓库名，没有后续路径，说明是首页
-      if (!restPath || restPath === '' || restPath === 'index') {
+      // 再次检查是否是首页
+      if (pageId === '' || pageId === 'index') {
         return 'index';
       }
-      
-      // 如果有后续路径，使用后续路径
-      pageId = restPath;
     }
     
     // 如果页面 ID 不包含 /，说明是目录索引页，添加 /index
