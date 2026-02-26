@@ -143,9 +143,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/X-Gen-Lab/zephyr-learning-system
-  # analytics:
-  #   provider: google
-  #   property: G-XXXXXXXXXX  # 如需启用，请替换为真实的 Google Analytics ID
+  analytics:
+    provider: google
+    property: G-X3DNJZ4960
 
 # Custom CSS for image optimization
 extra_css:
