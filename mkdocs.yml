@@ -150,6 +150,7 @@ extra:
 # Custom CSS for image optimization
 extra_css:
   - assets/stylesheets/extra.css
+  - assets/stylesheets/community-stats.css
 
 # Custom JavaScript for image optimization and community features
 extra_javascript:
