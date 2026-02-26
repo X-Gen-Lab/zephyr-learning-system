@@ -430,7 +430,7 @@ Zephyr 官方文档中有很多设计文档，解释架构决策：
 
 **问题模板**：
 
-```markdown
+````markdown
 ## 问题描述
 我在使用 nRF52840 DK 开发板时，遇到了线程栈溢出的问题。
 
@@ -444,6 +444,7 @@ Zephyr 官方文档中有很多设计文档，解释架构决策：
 
 ## 实际行为
 程序运行一段时间后崩溃，串口输出：
+
 ```
 *** USAGE FAULT ***
   Stacking error
@@ -455,6 +456,7 @@ Zephyr 官方文档中有很多设计文档，解释架构决策：
 3. 使用 CONFIG_THREAD_STACK_INFO=y 检查栈使用情况
 
 ## 代码示例
+
 ```c
 K_THREAD_STACK_DEFINE(my_stack, 1024);
 struct k_thread my_thread;
@@ -473,7 +475,7 @@ k_thread_create(&my_thread, my_stack, K_THREAD_STACK_SIZEOF(my_stack),
 
 ## 问题
 如何定位栈溢出的具体原因？是否有更好的调试方法？
-```
+````
 
 
 !!! warning "不好的问题"
