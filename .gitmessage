@@ -1,0 +1,28 @@
+# <类型>: <简短描述>
+#
+# 类型（必选）:
+#   add:      添加新内容
+#   fix:      修复问题
+#   update:   更新内容
+#   docs:     文档改进
+#   refactor: 重构代码
+#   style:    格式调整
+#   chore:    构建/工具变动
+#   feat:     新功能
+#
+# 示例:
+#   add: add Zephyr thread management chapter
+#   fix: fix broken links in environment setup docs
+#   update: update device tree configuration examples
+#   docs: improve contributing guidelines
+#
+# 提交信息规范:
+# - 使用英文描述
+# - 简洁明了，描述做了什么
+# - 第一行不超过 50 字符
+# - 如有详细说明，空一行后添加
+#
+# 关联 Issue（可选）:
+# Closes #123
+# Fixes #456
+# Related to #789
