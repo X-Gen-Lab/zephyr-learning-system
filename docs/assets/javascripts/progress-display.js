@@ -225,11 +225,31 @@
       existingOverview.remove();
     }
     
-    // 查找插入位置（第一个 h2 之后）
-    const firstH2 = document.querySelector('.md-content h2');
-    if (firstH2) {
+    // 查找插入位置（"我们的愿景"部分之后）
+    const headings = document.querySelectorAll('.md-content h2');
+    let insertAfter = null;
+    
+    // 找到"我们的愿景"标题
+    for (const heading of headings) {
+      if (heading.textContent.includes('我们的愿景')) {
+        // 找到这个标题后的下一个元素（通常是 admonition 或段落）
+        let nextElement = heading.nextElementSibling;
+        while (nextElement && (nextElement.classList.contains('admonition') || nextElement.tagName === 'P')) {
+          insertAfter = nextElement;
+          nextElement = nextElement.nextElementSibling;
+        }
+        break;
+      }
+    }
+    
+    // 如果没找到特定位置，就插入到第一个 h2 之后
+    if (!insertAfter && headings.length > 0) {
+      insertAfter = headings[0];
+    }
+    
+    if (insertAfter) {
       const overviewHTML = createProgressOverview();
-      firstH2.insertAdjacentHTML('afterend', overviewHTML);
+      insertAfter.insertAdjacentHTML('afterend', overviewHTML);
     }
   }
 
@@ -345,6 +365,9 @@
    * 初始化进度显示
    */
   function init() {
+    console.log('[ProgressDisplay] Initializing...');
+    console.log('[ProgressDisplay] Current page ID:', PT.getCurrentPageId());
+    
     // 标记已访问页面
     markVisitedPages();
     
@@ -358,12 +381,15 @@
     if (typeof document$ !== 'undefined') {
       document$.subscribe(() => {
         setTimeout(() => {
+          console.log('[ProgressDisplay] Navigation changed, updating...');
           markVisitedPages();
           displayProgressByPageType();
           animateProgressBars();
         }, 100);
       });
     }
+    
+    console.log('[ProgressDisplay] Initialized successfully');
   }
 
   // ==================== 导出 API ====================
