@@ -99,11 +99,33 @@ mkdocs serve
    - 使用 Markdown 格式编写
    - 支持代码高亮、Mermaid 图表、Admonitions 等扩展语法
 
-3. **预览更改**
+3. **优化图片**（添加新图片时）
+   ```bash
+   # 优化所有图片
+   python scripts/optimize-images.py
+   
+   # 预览优化效果（不修改文件）
+   python scripts/optimize-images.py --dry-run
+   
+   # 优化特定目录
+   python scripts/optimize-images.py --target-dir docs/assets/images/hardware
+   ```
+   
+   图片优化功能：
+   - 自动压缩 PNG/JPEG 图片
+   - 优化 SVG 文件
+   - 生成 WebP 格式
+   - 自动调整过大图片尺寸
+   - 确保图片 < 200KB
+   
+   详细说明请参考 [图片管理指南](docs/assets/images/README.md)
+
+4. **预览更改**
    - 访问 http://127.0.0.1:8000
    - 实时查看更改效果
+   - 图片自动启用懒加载
 
-4. **构建生产版本**
+5. **构建生产版本**
    ```bash
    ./scripts/build.sh build  # Linux/macOS
    scripts\build.bat build   # Windows
@@ -443,7 +465,7 @@ zephyr-learning-system/
 
 - **GitHub Issues**: [提交问题](https://github.com/X-Gen-Lab/zephyr-learning-system/issues)
 - **GitHub Discussions**: [参与讨论](https://github.com/X-Gen-Lab/zephyr-learning-system/discussions)
-- **Email**: contact@example.com
+- **Email**: vector.qiu@gmail.com
 
 ## 路线图
 
