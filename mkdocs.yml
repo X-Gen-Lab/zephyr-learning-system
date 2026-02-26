@@ -151,3 +151,6 @@ extra_css:
 # Custom JavaScript for image optimization
 extra_javascript:
   - assets/javascripts/image-optimization.js
+  - assets/javascripts/progress-tracker.js
+  - assets/javascripts/progress-display.js
+  - assets/javascripts/progress-management.js
