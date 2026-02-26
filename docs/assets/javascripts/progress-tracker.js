@@ -142,8 +142,16 @@
    */
   function getCurrentPageId() {
     const path = window.location.pathname;
+    
     // 移除开头的 / 和结尾的 .html 或 /
     let pageId = path.replace(/^\//, '').replace(/\/$/, '').replace(/\.html$/, '');
+    
+    // 移除 GitHub Pages 的仓库名称前缀（如果存在）
+    // 例如：zephyr-learning-system/index -> index
+    const repoNameMatch = pageId.match(/^([^\/]+)\/(.*)/);
+    if (repoNameMatch && repoNameMatch[2] !== undefined) {
+      pageId = repoNameMatch[2];
+    }
     
     // 处理首页
     if (pageId === '' || pageId === 'index') {

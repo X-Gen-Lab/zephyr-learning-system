@@ -333,6 +333,8 @@
     
     // 移除无效的页面ID
     const validPages = [];
+    const invalidPages = [];
+    
     progress.visitedPages.forEach(pageId => {
       // 检查页面是否在任何阶段中
       let isValid = false;
@@ -347,14 +349,21 @@
         validPages.push(pageId);
       } else {
         needsRepair = true;
-        console.warn('Removed invalid page ID:', pageId);
+        invalidPages.push(pageId);
       }
     });
     
     if (needsRepair) {
       progress.visitedPages = validPages;
       PT.saveProgress(progress);
-      showNotification('进度数据已自动修复。', 'info');
+      
+      // 只在开发模式下显示详细信息
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.info('Progress data cleaned:', {
+          removed: invalidPages,
+          kept: validPages.length
+        });
+      }
     }
   }
 

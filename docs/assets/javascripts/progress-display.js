@@ -71,6 +71,13 @@
     // 移除结尾的 / 和 .html
     path = path.replace(/\/$/, '').replace(/\.html$/, '');
     
+    // 移除 GitHub Pages 的仓库名称前缀（如果存在）
+    // 例如：zephyr-learning-system/index -> index
+    const repoNameMatch = path.match(/^([^\/]+)\/(.*)/);
+    if (repoNameMatch && repoNameMatch[2] !== undefined) {
+      path = repoNameMatch[2];
+    }
+    
     // 处理特殊情况
     if (path === '' || path === 'index' || path === 'index.html') {
       return null; // 首页不标记
