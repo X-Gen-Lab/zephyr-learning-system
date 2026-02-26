@@ -1,20 +1,25 @@
 /**
  * Giscus 评论系统集成
  * 基于 GitHub Discussions 的评论系统
+ * 
+ * 配置说明：
+ * 1. 确保仓库已启用 GitHub Discussions 功能
+ * 2. 安装 Giscus App: https://github.com/apps/giscus
+ * 3. 访问 https://giscus.app/zh-CN 获取正确的配置参数
  */
 
 // Giscus 配置
 const giscusConfig = {
   repo: 'X-Gen-Lab/zephyr-learning-system',
-  repoId: 'R_kgDORYYNgg', // 需要从 GitHub 获取
-  category: 'Announcements',
-  categoryId: 'DIC_kwDORYYNgs4C3MHU', // 需要从 GitHub 获取
+  repoId: 'R_kgDONWqGdg', // 从 giscus.app 获取
+  category: 'General',
+  categoryId: 'DIC_kwDONWqGds4ClQVh', // 从 giscus.app 获取
   mapping: 'pathname',
   strict: '0',
   reactionsEnabled: '1',
   emitMetadata: '0',
   inputPosition: 'top',
-  theme: 'light_high_contrast',
+  theme: 'preferred_color_scheme',
   lang: 'zh-CN',
   loading: 'lazy'
 };
@@ -24,9 +29,14 @@ const giscusConfig = {
  */
 function loadGiscus() {
   // 检查是否在内容页面（非首页、索引页）
-  const isContentPage = !window.location.pathname.match(/\/(index\.html)?$/);
+  const path = window.location.pathname;
+  const isHomePage = path === '/' || path === '/index.html' || 
+                     path.endsWith('/zephyr-learning-system/') || 
+                     path.endsWith('/zephyr-learning-system/index.html');
+  const isIndexPage = path.endsWith('/index.html') || path.endsWith('/index/');
   
-  if (!isContentPage) {
+  if (isHomePage || isIndexPage) {
+    console.log('[Comments] Skipping comments on index page:', path);
     return; // 首页和索引页不显示评论
   }
 
@@ -34,19 +44,22 @@ function loadGiscus() {
   const commentsContainer = document.getElementById('comments-container');
   
   if (!commentsContainer) {
-    console.warn('Comments container not found');
+    console.warn('[Comments] Comments container not found');
     return;
   }
+
+  // 检查是否已经加载过
+  if (commentsContainer.querySelector('script[src*="giscus"]')) {
+    console.log('[Comments] Giscus already loaded');
+    return;
+  }
+
+  console.log('[Comments] Loading Giscus for page:', path);
 
   // 移除加载提示
   const loadingElement = commentsContainer.querySelector('.comments-loading');
   if (loadingElement) {
     loadingElement.remove();
-  }
-
-  // 检查是否已经加载过
-  if (commentsContainer.querySelector('script[src*="giscus"]')) {
-    return;
   }
 
   // 创建 Giscus script 标签
@@ -67,7 +80,26 @@ function loadGiscus() {
   script.setAttribute('crossorigin', 'anonymous');
   script.async = true;
 
+  // 添加错误处理
+  script.onerror = function() {
+    console.error('[Comments] Failed to load Giscus script');
+    const errorMsg = document.createElement('div');
+    errorMsg.className = 'comments-error';
+    errorMsg.innerHTML = `
+      <p>⚠️ 评论系统加载失败</p>
+      <p>可能的原因：</p>
+      <ul>
+        <li>GitHub Discussions 未启用</li>
+        <li>Giscus App 未安装</li>
+        <li>网络连接问题</li>
+      </ul>
+      <p>请查看 <a href="/GISCUS_SETUP/" target="_blank">配置指南</a></p>
+    `;
+    commentsContainer.appendChild(errorMsg);
+  };
+
   commentsContainer.appendChild(script);
+  console.log('[Comments] Giscus script added to page');
 }
 
 /**

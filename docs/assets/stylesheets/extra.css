@@ -1135,3 +1135,35 @@ svg {
     break-inside: avoid;
   }
 }
+
+/* Comments error styling */
+.comments-error {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #856404;
+}
+
+.comments-error p:first-child {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.comments-error ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.comments-error a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+[data-md-color-scheme="slate"] .comments-error {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
