@@ -134,6 +134,7 @@ nav:
   - 开发者文档:
       - 社区功能说明: COMMUNITY_FEATURES.md
       - Giscus 配置指南: GISCUS_SETUP.md
+      - Google Analytics 配置: GOOGLE_ANALYTICS_SETUP.md
       - 统计配置指南: ANALYTICS_SETUP.md
       - 性能优化: PERFORMANCE.md
 
@@ -142,9 +143,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/X-Gen-Lab/zephyr-learning-system
-  analytics:
-    provider: google
-    property: G-XXXXXXXXXX
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX  # 如需启用，请替换为真实的 Google Analytics ID
 
 # Custom CSS for image optimization
 extra_css:
