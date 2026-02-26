@@ -147,7 +147,7 @@
     let pageId = path.replace(/^\//, '').replace(/\/$/, '').replace(/\.html$/, '');
     
     // 移除 GitHub Pages 的仓库名称前缀（如果存在）
-    // 例如：zephyr-learning-system/index -> index
+    // 例如：zephyr-learning-system/prerequisites/index -> prerequisites/index
     const repoNameMatch = pageId.match(/^([^\/]+)\/(.*)/);
     if (repoNameMatch && repoNameMatch[2] !== undefined) {
       pageId = repoNameMatch[2];
@@ -156,6 +156,12 @@
     // 处理首页
     if (pageId === '' || pageId === 'index') {
       return 'index';
+    }
+    
+    // 如果页面 ID 不包含 /，说明是目录索引页，添加 /index
+    // 例如：prerequisites -> prerequisites/index
+    if (!pageId.includes('/')) {
+      pageId = pageId + '/index';
     }
     
     return pageId;

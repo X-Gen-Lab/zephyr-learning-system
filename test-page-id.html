@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page ID Extraction</title>
+</head>
+<body>
+    <h1>Test Page ID Extraction</h1>
+    <div id="results"></div>
+    
+    <script>
+        // 模拟不同的 URL 路径
+        const testCases = [
+            { path: '/zephyr-learning-system/', expected: 'index' },
+            { path: '/zephyr-learning-system/index.html', expected: 'index' },
+            { path: '/zephyr-learning-system/prerequisites/', expected: 'prerequisites/index' },
+            { path: '/zephyr-learning-system/prerequisites/index.html', expected: 'prerequisites/index' },
+            { path: '/zephyr-learning-system/prerequisites/c-language/', expected: 'prerequisites/c-language' },
+            { path: '/zephyr-learning-system/stage1-foundation/introduction/', expected: 'stage1-foundation/introduction' },
+            { path: '/prerequisites/', expected: 'prerequisites/index' },
+            { path: '/prerequisites/c-language/', expected: 'prerequisites/c-language' }
+        ];
+        
+        function getCurrentPageId(pathname) {
+            // 移除开头的 / 和结尾的 .html 或 /
+            let pageId = pathname.replace(/^\//, '').replace(/\/$/, '').replace(/\.html$/, '');
+            
+            // 移除 GitHub Pages 的仓库名称前缀（如果存在）
+            const repoNameMatch = pageId.match(/^([^\/]+)\/(.*)/);
+            if (repoNameMatch && repoNameMatch[2] !== undefined) {
+                pageId = repoNameMatch[2];
+            }
+            
+            // 处理首页
+            if (pageId === '' || pageId === 'index') {
+                return 'index';
+            }
+            
+            return pageId;
+        }
+        
+        const results = document.getElementById('results');
+        let html = '<table border="1" style="border-collapse: collapse; width: 100%;">';
+        html += '<tr><th>Path</th><th>Expected</th><th>Actual</th><th>Status</th></tr>';
+        
+        testCases.forEach(test => {
+            const actual = getCurrentPageId(test.path);
+            const status = actual === test.expected ? '✅ PASS' : '❌ FAIL';
+            const color = actual === test.expected ? 'green' : 'red';
+            
+            html += `<tr>
+                <td>${test.path}</td>
+                <td>${test.expected}</td>
+                <td>${actual}</td>
+                <td style="color: ${color}; font-weight: bold;">${status}</td>
+            </tr>`;
+        });
+        
+        html += '</table>';
+        results.innerHTML = html;
+    </script>
+</body>
+</html>
