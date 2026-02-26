@@ -93,19 +93,19 @@
 4. **提交更改**
    ```bash
    git add .
-   git commit -m "类型: 简短描述"
+   git commit -m "type: brief description"
    ```
    
    提交信息格式：
-   - `Add: 添加 XXX 内容`
-   - `Fix: 修复 XXX 问题`
-   - `Update: 更新 XXX 内容`
-   - `Docs: 改进 XXX 文档`
-   - `Refactor: 重构 XXX 代码`
-   - `Style: 格式调整`
+   - `add: add XXX content`
+   - `fix: fix XXX issue`
+   - `update: update XXX content`
+   - `docs: improve XXX documentation`
+   - `refactor: refactor XXX code`
+   - `style: format adjustment`
    
    提交信息应该：
-   - 使用中文
+   - 使用英文
    - 简洁明了
    - 描述做了什么，而不是为什么做
 

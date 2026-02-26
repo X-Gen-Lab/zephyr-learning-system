@@ -271,14 +271,14 @@ aws cloudfront create-invalidation --distribution-id YOUR_DIST_ID --paths "/*"
 5. **提交更改**
    ```bash
    git add .
-   git commit -m "Add: 添加 XXX 内容"
+   git commit -m "add: add XXX content"
    ```
    
    提交信息格式:
-   - `Add: 添加新内容`
-   - `Fix: 修复问题`
-   - `Update: 更新内容`
-   - `Docs: 文档改进`
+   - `add: add new content`
+   - `fix: fix issue`
+   - `update: update content`
+   - `docs: improve documentation`
 
 6. **推送到 GitHub**
    ```bash
